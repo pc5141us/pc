@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doma Mail - بريد مؤقت مجاني</title>
+    <link rel="stylesheet" href="styles.css?v=2.1">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="app-container">
+        <header class="header">
+            <div class="logo">
+                <svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor">
+                    <path
+                        d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z" />
+                </svg>
+                <h1>Doma Mail</h1>
+            </div>
+            <p>بريد إلكتروني مؤقت وسريع للاستخدام الواحد</p>
+        </header>
+
+        <main>
+            <section class="email-section card">
+                <h2>بريدك المؤقت الحالي:</h2>
+                <div class="email-box">
+                    <input type="text" id="email-address" readonly value="جاري إنشاء بريد...">
+                    <button id="copy-btn" class="btn primary-btn">نسخ</button>
+                    <button id="new-email-btn" class="btn secondary-btn">بريد عشوائي</button>
+                </div>
+                
+                <div class="custom-email-box">
+                    <input type="text" id="custom-prefix" placeholder="اختر اسماً (اختياري)...">
+                    <select id="domain-select" class="domain-select"></select>
+                    <button id="create-custom-btn" class="btn secondary-btn">إنشاء مخصص</button>
+                </div>
+
+                <div id="copy-message" class="toast hidden">تم نسخ البريد بنجاح! ✓</div>
+            </section>
+
+            <section class="inbox-section card">
+                <div class="inbox-header">
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <h2>صندوق الوارد</h2>
+                        <span id="unread-count" class="badge">0</span>
+                    </div>
+                    <button id="refresh-btn" class="btn icon-btn">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                            <path
+                                d="M17.65 6.35A7.958 7.958 0 0012 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08A5.99 5.99 0 0112 18c-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z" />
+                        </svg>
+                        تحديث البريد
+                    </button>
+                </div>
+
+                <div id="messages-list" class="messages-list">
+                    <div class="empty-state">
+                        <div class="loader"></div>
+                        <p>في انتظار وصول رسائل جديدة...</p>
+                        <small>يتم تحديث الصندوق تلقائياً كل 5 ثوانٍ</small>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Message Details Modal -->
+        <div id="message-modal" class="modal hidden">
+            <div class="modal-content card">
+                <div class="modal-header">
+                    <h2 id="modal-subject">موضوع الرسالة</h2>
+                    <button id="close-modal" class="btn icon-btn">&times;</button>
+                </div>
+                <div class="modal-info">
+                    <p><strong>من:</strong> <span id="modal-sender"></span></p>
+                    <p><strong>التاريخ:</strong> <span id="modal-date"></span></p>
+                </div>
+                <div class="modal-body" id="modal-body">
+                    <!-- Email Content Here -->
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>صنع بإبداع بواسطة Doma Ai &copy; <span id="current-year"></span></p>
+            <script>document.getElementById('current-year').textContent = new Date().getFullYear();</script>
+        </footer>
+    </div>
+    <script src="script.js?v=2.1"></script>
+</body>
+
+</html>
